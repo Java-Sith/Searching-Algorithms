@@ -13,17 +13,23 @@ int SequentialSearch(int arr[], int n, int size) {
 }
 
 int BinarySearch(int arr[], int n, int size) {
+    int *p;
+    int *g;
+    int *f;
     int max = size - 1;
     int min = 0;
-    while (min <= max) {
+    g = &max;
+    f = &min;
+    while (*f <= *g) {
         int pivot = (max+min)/2;
-        if (n == arr[pivot]) {
-            return pivot;
+        p = &pivot;
+        if (n == arr[*p]) {
+            return *p;
         }
         else if (arr[pivot] < n) {
-            min = pivot + 1;
+            *f = *p + 1;
         } else {
-            max = pivot - 1;
+            *g = *p - 1;
         }
     }
     return 0;
