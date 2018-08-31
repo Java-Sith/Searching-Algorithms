@@ -59,10 +59,16 @@ int InterpolationSearch(int arr[], int n, int size) {
 }
 
 int main() {
-    int arr[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    int n = 7;
-    int x = InterpolationSearch(arr, n, 10);
+    int arr[10] = {541, 542, 543, 544, 545, 546, 547, 548, 549, 550};
+    int n;
+    cout << "Please enter your security code: " << flush;
+    cin >> n;
+    int x = SequentialSearch(arr, n, 10);
+    int y = BinarySearch(arr, n, 10);
+    int z = InterpolationSearch(arr, n, 10);
     cout << "The number is at index: " << x << endl;
+    cout << "The number is at index: " << y << endl;
+    cout << "The number is at index: " << z << endl;
     return 0;
 }
 
