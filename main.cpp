@@ -1,4 +1,5 @@
 #include <iostream>
+#include <>
 using namespace std;
 
 int SequentialSearch(int arr[], int n, int size) {
@@ -58,17 +59,47 @@ int InterpolationSearch(int arr[], int n, int size) {
     return 0;
 }
 
+void Hashing(int data, int arr[]) {
+    int pos = data % 5;
+    if (arr[pos] == 0) {
+        arr[pos] = data;
+    } else {
+        for (int i = (pos + 1) % 5; i != pos; i = (i + 1) % 5) {
+            if (arr[i] == 0) {
+                arr[i] = data;
+                break;
+            }
+            if (i == pos) {
+                cout << "Out of space\n";
+                break;
+            }
+        }
+    }
+}
+
+void hashSearch (int data, int arr[]) {
+    int pos = data % 5;
+    if (arr[pos] == 0) {
+        cout << "The element is deleted" << endl;
+    }
+    else if (arr[pos] == data) {
+        cout << "The element is at index " << pos + 1 << endl;
+    } else {
+        for (int i = (pos + 1) % 5; i != pos; i = (i + 1) % 5) {
+            if (arr[i] == data) {
+                cout << "The element is at index " << i + 1 << endl;
+            }
+            else if (arr[i] != data) {
+                cout << "Element not found" << endl;
+                break;
+            }
+        }
+    }
+}
+
 int main() {
-    int arr[10] = {541, 542, 543, 544, 545, 546, 547, 548, 549, 550};
-    int n;
-    cout << "Please enter your security code: " << flush;
-    cin >> n;
-    int x = SequentialSearch(arr, n, 10);
-    int y = BinarySearch(arr, n, 10);
-    int z = InterpolationSearch(arr, n, 10);
-    cout << "The number is at index: " << x << endl;
-    cout << "The number is at index: " << y << endl;
-    cout << "The number is at index: " << z << endl;
+    int arr[10] = {101541, 101542, 101543, 101544, 101545, 101546, 101547, 101548, 101549, 101550};
+    int size = sizeof(arr)/ sizeof(int);
     return 0;
 }
 
